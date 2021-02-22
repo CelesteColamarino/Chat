@@ -1,7 +1,9 @@
+import "antd/dist/antd.css";
 import React from "react";
+import MainLayout from "./components/MainLayout";
 
 const App = () => {
-  return <div>App!</div>;
+  return <MainLayout />;
 };
 
 export default App;
