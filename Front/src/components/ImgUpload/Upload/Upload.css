@@ -1,0 +1,17 @@
+.uploadCard {
+  display: flex;
+  z-index: 2;
+  width: "18rem";
+  border: none;
+}
+
+.uploadImg {
+  height: 37vh;
+  padding-top: 20px;
+}
+
+.uploadBtn {
+  color: #fff;
+  background-color: #2f2da8;
+  border-color: #2f2da8;
+}

@@ -1,0 +1,12 @@
+.modalbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  height: 530px;
+}
+
+.mainmodal {
+  width: 90vw;
+}

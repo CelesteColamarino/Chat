@@ -1,0 +1,44 @@
+.form {
+  display: flex;
+  border-top: 2px solid #d3d3d3;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.input {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 80%;
+  font-size: 1.2em;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #2f2da8;
+  border-color: #2f2da8;
+}
+
+.btn-primary:hover {
+  background: #4650c4 !important;
+  border-color: #4650c4 !important;
+}
+
+.btn-primary:focus {
+  background: #4650c4 !important;
+  border-color: #4650c4 !important;
+}
+
+.btn-primary:active {
+  background: #4650c4 !important;
+  border-color: #4650c4 !important;
+}
+
+.buttonCont {
+  margin: 5px;
+}
