@@ -4,7 +4,7 @@ import { Button, InputGroup, FormControl } from "react-bootstrap";
 
 import "./ImgUpload.css";
 
-const ImgUpload = () => {
+const ImgUpload = ({ sendPicture }) => {
   const canvas = useRef(null);
   const canvasimg = useRef(null);
 
@@ -55,6 +55,7 @@ const ImgUpload = () => {
     e.preventDefault();
     e.stopPropagation();
     if (!mouseDown) {
+      sendPicture(canvasimg.current.toDataURL("image/png"));
       return;
     }
 
@@ -86,6 +87,7 @@ const ImgUpload = () => {
     setHeight(null);
     setWidth(null);
     setTag("");
+    sendPicture(canvasimg.current.toDataURL("image/png"));
   };
 
   return (

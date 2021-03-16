@@ -17,6 +17,13 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [picture, setPicture] = useState(null);
+
+  const sendingPicture = (picture) => {
+    setPicture(picture);
+    console.log(picture);
+    setMessage(picture);
+  };
 
   const ENDPOINT = "localhost:5000";
 
@@ -62,8 +69,8 @@ const Chat = ({ location }) => {
           message={message}
           setMessage={setMessage}
           sendMessage={sendMessage}
+          sendingPicture={sendingPicture}
         />
-        {/* <ImgModal /> */}
       </div>
     </div>
   );

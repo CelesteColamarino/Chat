@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ImgModal from "../Modal/ImgModal";
 import { Button } from "react-bootstrap";
 
 import "./Input.css";
 
-const Input = ({ message, setMessage, sendMessage }) => {
+const Input = ({ message, setMessage, sendMessage, sendingPicture }) => {
   return (
     <form className="form">
       <input
@@ -16,7 +16,7 @@ const Input = ({ message, setMessage, sendMessage }) => {
         onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
       />
       <div className="buttonCont">
-        <ImgModal />
+        <ImgModal sendingPicture={sendingPicture} />
       </div>
       <div className="buttonCont">
         <Button onClick={sendMessage}>
