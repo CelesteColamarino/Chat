@@ -14,23 +14,37 @@ const Message = ({ message: { user, text }, name }) => {
   return isSentByCurrentUser ? (
     <div className="messageContainer justifyEnd">
       <p className="sentText pr-10">{trimmedName}</p>
-      <div className="messageBox backgroundBlue">
-        {isImg ? (
-          <img src={text} style={{ maxWidth: "300px", maxHeight: "300px" }} />
-        ) : (
+
+      {isImg ? (
+        <div className="messageBox backgroundPicture">
+          <img
+            alt="uploadedPicture"
+            src={text}
+            style={{ maxWidth: "300px", maxHeight: "300px" }}
+          />
+        </div>
+      ) : (
+        <div className="messageBox backgroundText">
           <p className="messageText colorWhite">{text}</p>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   ) : (
     <div className="messageContainer justifyStart">
-      <div className="messageBox backgroundLight">
-        {isImg ? (
-          <img src={text} style={{ maxWidth: "300px", maxHeight: "300px" }} />
-        ) : (
+      {isImg ? (
+        <div className="messageBox backgroundPicture">
+          <img
+            alt="uploadedPicture"
+            src={text}
+            style={{ maxWidth: "300px", maxHeight: "300px" }}
+          />
+        </div>
+      ) : (
+        <div className="messageBox backgroundLight">
           <p className="messageText colorDark">{text}</p>
-        )}
-      </div>
+        </div>
+      )}
+
       <p className="sentText pl-10 ">{user}</p>
     </div>
   );

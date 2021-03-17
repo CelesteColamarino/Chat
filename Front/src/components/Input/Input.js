@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import ImgModal from "../Modal/ImgModal";
+import React from "react";
+import UploadModal from "../UploadModal/UploadModal";
 import { Button } from "react-bootstrap";
 
 import "./Input.css";
@@ -11,12 +11,16 @@ const Input = ({ message, setMessage, sendMessage, sendingPicture }) => {
         className="input"
         type="text"
         placeholder="Type a message..."
-        value={message}
+        value={
+          message.includes("data:image/")
+            ? "Image loaded, click send!"
+            : message
+        }
         onChange={(e) => setMessage(e.target.value)}
         onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
       />
       <div className="buttonCont">
-        <ImgModal sendingPicture={sendingPicture} />
+        <UploadModal sendingPicture={sendingPicture} />
       </div>
       <div className="buttonCont">
         <Button onClick={sendMessage}>

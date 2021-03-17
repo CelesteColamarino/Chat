@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import ImgUpload from "../ImgUpload/ImgUpload";
-import "./ImgModal.css";
+import "./UploadModal.css";
 
-const ImgModal = ({ sendingPicture }) => {
+const UploadModal = ({ sendingPicture }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -49,4 +49,4 @@ const ImgModal = ({ sendingPicture }) => {
   );
 };
 
-export default ImgModal;
+export default UploadModal;

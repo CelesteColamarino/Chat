@@ -60,10 +60,14 @@
   color: #353535;
 }
 
-.backgroundBlue {
-  background: #2979ff;
+.backgroundText {
+  background: #7143ca;
 }
 
 .backgroundLight {
   background: #f3f3f3;
+}
+
+.backgroundPicture {
+  background: #ffff;
 }
