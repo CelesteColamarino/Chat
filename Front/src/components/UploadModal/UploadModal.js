@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import ImgUpload from "../ImgUpload/ImgUpload";
-import "./ImgModal.css";
+import "./UploadModal.css";
 
-const ImgModal = () => {
+const UploadModal = ({ sendingPicture }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [image, setImage] = useState(null);
+
+  const sendPicture = (imagen) => {
+    setImage(imagen);
+  };
+
+  const handleClick = () => {
+    setShow(false);
+    sendingPicture(image);
+  };
 
   return (
     <div>
@@ -24,13 +34,13 @@ const ImgModal = () => {
           <Modal.Title>Share</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modalbody">
-          <ImgUpload />
+          <ImgUpload sendPicture={sendPicture} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClick}>
             Send Picture
           </Button>
         </Modal.Footer>
@@ -39,4 +49,4 @@ const ImgModal = () => {
   );
 };
 
-export default ImgModal;
+export default UploadModal;

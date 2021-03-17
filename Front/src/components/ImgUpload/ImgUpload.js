@@ -1,22 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
-import Upload from "./Upload/Upload";
-import { Button, InputGroup, FormControl } from "react-bootstrap";
+import LoadFile from "./LoadFile/LoadFile";
+import Tag from "./Tag/Tag";
 
 import "./ImgUpload.css";
 
-const ImgUpload = () => {
+const ImgUpload = ({ sendPicture }) => {
   const canvas = useRef(null);
   const canvasimg = useRef(null);
 
+  const [ctxImg, setCtxImg] = useState({});
+  const [ctx, setCtx] = useState({});
+  const [mouseDown, setMouseDown] = useState(false);
   const [start, setStart] = useState([]);
   const [finish, setFinish] = useState([]);
   const [width, setWidth] = useState(null);
   const [height, setHeight] = useState(null);
-  const [mouseDown, setMouseDown] = useState(false);
-  const [ctxImg, setCtxImg] = useState({});
-  const [ctx, setCtx] = useState({});
   const [loading, setLoading] = useState(true);
-  const [image, setImage] = useState({});
   const [tag, setTag] = useState("");
 
   useEffect(() => {
@@ -55,6 +54,7 @@ const ImgUpload = () => {
     e.preventDefault();
     e.stopPropagation();
     if (!mouseDown) {
+      sendPicture(canvasimg.current.toDataURL("image/png"));
       return;
     }
 
@@ -80,17 +80,17 @@ const ImgUpload = () => {
       ctxImg.font = "20px roboto";
       ctxImg.fillText(tag, finish[0], finish[1]);
     }
-    let imageData = ctxImg.getImageData(0, 0, 500, 500);
 
-    setImage(imageData);
     setHeight(null);
     setWidth(null);
     setTag("");
+    sendPicture(canvasimg.current.toDataURL("image/png"));
   };
 
   return (
     <React.Fragment>
-      {loading ? <Upload handleImage={handleImage} /> : null}
+      {loading ? <LoadFile handleImage={handleImage} /> : null}
+
       <div
         style={{
           position: "absolute",
@@ -100,32 +100,16 @@ const ImgUpload = () => {
         }}
       >
         {height ? (
-          <InputGroup
-            className="mb-3"
-            style={{ zIndex: "3", position: "absolute" }}
-          >
-            <FormControl
-              placeholder="Choose a tag's name"
-              aria-label="Choose a tag's name"
-              aria-describedby="basic-addon2"
-              onChange={(e) => {
-                setTag(e.target.value);
-              }}
-              value={tag}
-            />
-            <InputGroup.Append>
-              <Button variant="outline-secondary" onClick={handleTag}>
-                <i class="fas fa-user-tag"></i>Tag
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
+          <Tag handleTag={handleTag} setTag={setTag} tag={tag} />
         ) : null}
+
         <canvas
           ref={canvasimg}
           height="500"
           width="500"
           style={{ position: "absolute", left: "0", top: "0", zIndex: "0" }}
         ></canvas>
+
         <canvas
           ref={canvas}
           height="500"

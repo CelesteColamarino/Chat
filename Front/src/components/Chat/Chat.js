@@ -5,7 +5,6 @@ import io from "socket.io-client";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 import Messages from "../Messages/Messages";
-import ImgModal from "../Modal/ImgModal";
 
 import "./Chat.css";
 
@@ -17,6 +16,10 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+
+  const sendingPicture = (picture) => {
+    setMessage(picture);
+  };
 
   const ENDPOINT = "localhost:5000";
 
@@ -62,8 +65,8 @@ const Chat = ({ location }) => {
           message={message}
           setMessage={setMessage}
           sendMessage={sendMessage}
+          sendingPicture={sendingPicture}
         />
-        {/* <ImgModal /> */}
       </div>
     </div>
   );

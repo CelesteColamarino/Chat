@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import "./Upload.css";
+import "./LoadFile.css";
 
-const Upload = ({ handleImage }) => {
+const LoadFile = ({ handleImage }) => {
   return (
     <Card className="uploadCard text-center">
       <Card.Img className="uploadImg" variant="top" src="/images/upload2.svg" />
@@ -20,4 +20,4 @@ const Upload = ({ handleImage }) => {
   );
 };
 
-export default Upload;
+export default LoadFile;

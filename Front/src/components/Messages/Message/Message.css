@@ -33,6 +33,7 @@
   font-family: Helvetica;
   color: #828282;
   letter-spacing: 0.3px;
+  margin: 0;
 }
 
 .pl-10 {
@@ -59,10 +60,14 @@
   color: #353535;
 }
 
-.backgroundBlue {
-  background: #2979ff;
+.backgroundText {
+  background: #7143ca;
 }
 
 .backgroundLight {
   background: #f3f3f3;
+}
+
+.backgroundPicture {
+  background: #ffff;
 }
