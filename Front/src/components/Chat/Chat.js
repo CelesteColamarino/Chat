@@ -11,7 +11,6 @@ import "./Chat.css";
 let socket;
 
 const Chat = ({ location }) => {
-  console.log("entrando al chat");
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
@@ -31,7 +30,11 @@ const Chat = ({ location }) => {
     setName(name);
     setRoom(room);
 
-    socket.emit("join", { name, room }, () => {});
+    socket.emit("join", { name, room }, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
 
     return () => {
       socket.emit("disconnected");
@@ -71,5 +74,4 @@ const Chat = ({ location }) => {
     </div>
   );
 };
-
 export default Chat;
